@@ -77,8 +77,8 @@ function JobTile(props){
                 </div>
                 <div className={getTailwindClass(props.tailwind.INFOCOLUMN.GROUP2)}>
                     <p className={getTailwindClass(props.tailwind.INFOCOLUMN.GROUP2.JOBDESCRIPTION)}>{jobDescription}</p>
-                    <p className={getTailwindClass(props.tailwind.INFOCOLUMN.GROUP2.EXPERIENCE)}>Experience ( {props.keys.minExp/10} - {props.keys.maxExp/10} ) years</p>
-                    <p className={getTailwindClass(props.tailwind.INFOCOLUMN.GROUP2.SALARY)}>INR <span>&#8377;</span> {props.keys.minSalary}000 - {props.keys.maxSalary}000 / Month</p>
+                    <p className={getTailwindClass(props.tailwind.INFOCOLUMN.GROUP2.EXPERIENCE)}>Experience ( {props.keys.minExp} - {props.keys.maxExp} ) years</p>
+                    <p className={getTailwindClass(props.tailwind.INFOCOLUMN.GROUP2.SALARY)}>INR <span>&#8377;</span> {props.keys.minSalary} - {props.keys.maxSalary} / Month</p>
                     <p className={getTailwindClass(props.tailwind.INFOCOLUMN.GROUP2.EMPLOYEESNUMBER)}>{props.keys.totalEmployee} employees</p>
                 </div>
                 <JobTileButton/>
