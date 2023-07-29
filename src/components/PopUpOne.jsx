@@ -30,42 +30,31 @@ function PopUpOne(props){
         }
     },[context.currentJobId])
     
+    const jobDetails={
+        "jobTitle":input1,
+        "companyName":input2,
+        "industry":input3,
+        "location":input4,
+        "remoteType":input5==="YES" || input5==="yes" || input5==="Yes" || input5==="remote" || input5==="REDMOTE" || input5==="Remote" || input5==="True" || input5==="true"  ,
+        "createdAt":Date.now(),
+        "minExp":context.activeJob.minExp,
+        "maxExp":context.activeJob.maxExp,
+        "minSalary":context.activeJob.minSalary,
+        "maxSalary":context.activeJob.maxSalary,
+        "totalEmployee":context.activeJob.totalEmployee,
+        "applyType":context.activeJob.applyType
+    }
+
     const handleNext=function(){
         if(input1.length<5 || input2.length<5 || input3.length<5){
             setChecked(true);
         }else if(input1.length>4 && input2.length>4 && input3.length>4){
             let obj;
             if(context.currentJobId==="0"){
-                obj={
-                    "id":context.activeJob.id,
-                    "jobTitle":input1,
-                    "companyName":input2,
-                    "industry":input3,
-                    "location":input4,
-                    "remoteType":input5==="YES" || input5==="yes" || input5==="Yes" || input5==="remote" || input5==="REDMOTE" || input5==="Remote" || input5==="True" || input5==="true",
-                    "createdAt":Date.now(),
-                    "minExp":context.activeJob.minExp,
-                    "maxExp":context.activeJob.maxExp,
-                    "minSalary":context.activeJob.minSalary,
-                    "maxSalary":context.activeJob.maxSalary,
-                    "totalEmployee":context.activeJob.totalEmployee,
-                    "applyType":context.activeJob.applyType
-                }
+                obj=jobDetails;
+                obj["id"]=context.activeJob.id;
             }else{
-                obj={
-                    "jobTitle":input1,
-                    "companyName":input2,
-                    "industry":input3,
-                    "location":input4,
-                    "remoteType":input5==="YES" || input5==="yes" || input5==="Yes" || input5==="remote" || input5==="REDMOTE" || input5==="Remote" || input5==="True" || input5==="true"  ,
-                    "createdAt":Date.now(),
-                    "minExp":context.activeJob.minExp,
-                    "maxExp":context.activeJob.maxExp,
-                    "minSalary":context.activeJob.minSalary,
-                    "maxSalary":context.activeJob.maxSalary,
-                    "totalEmployee":context.activeJob.totalEmployee,
-                    "applyType":context.activeJob.applyType
-                }
+                obj=jobDetails;
             }
             
             dispatch.activeJobDispatch({

@@ -45,14 +45,19 @@ function PopUpTwo(props){
         }
     },[checked1,checked2])
 
-    const handleSave=async function(){
-        const obj=context.activeJob;
+    const getFormData=function(){
+        let obj=context.activeJob;
         obj["minExp"]=input1>0?parseInt(input1,10):0;
         obj["maxExp"]=input2>0?parseInt(input2,10):0;
         obj["minSalary"]=input3>0?parseInt(input3,10):0;
         obj["maxSalary"]=input4>0?parseInt(input4,10):0;
         obj["totalEmployee"]=input5>0?parseInt(input5,10):0;
         obj["applyType"]=input6;
+        return obj;
+    }
+
+    const handleSave=async function(){
+        const obj=getFormData();
         
         let success=true;
         if(context.currentJobId==="0"){
@@ -90,7 +95,6 @@ function PopUpTwo(props){
                 obj:obj
             })
         }
-
         dispatch.pageIndexDispatch({
             type:'go-to-home'
         });

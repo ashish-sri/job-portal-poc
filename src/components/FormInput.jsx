@@ -33,9 +33,4 @@ function FormInput(props){
     )
 }
 
-// shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm
-
 export default FormInput;
-// "text-sm font-semibold"
-// "ex. UX UI Designer"
-// "placeholder:text-[#7a7a7a] placeholder:text-sm text-sm block w-full border border-[#7a7a7a] rounded-sm py-1 px-2 "

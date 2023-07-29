@@ -2,7 +2,7 @@ import PopUpOne from "./PopUpOne";
 import PopUpTwo from "./PopUpTwo";
 import { useAppContext } from '../context/appContext';
 import { getTailwindClass } from "../resources/tailwindClass";
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 
 function FullScreenPopUp(props){
     const context=useAppContext();
@@ -16,7 +16,7 @@ function FullScreenPopUp(props){
         else if(pageIndex===2) return(
             <PopUpTwo tailwind={props.tailwind.POPUPWINDOW}/>
         )
-    } // relative w-full max-w-2xl max-h-full
+    } 
 
     return(
         <div className={getTailwindClass(props.tailwind)}>

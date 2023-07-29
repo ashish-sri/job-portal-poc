@@ -3,7 +3,7 @@ import axios from 'axios';
 export default{
     async getAllJobs(){
         try{
-            const response=await axios.get("https://64be5bd95ee688b6250c42bd.mockapi.io/api/v1/jobs");
+            const response=await axios.get(MOCKAPI_URL);
             return response.data;
         }catch(err){
             console.log(err.message)
@@ -13,7 +13,7 @@ export default{
 
     async getJob(id){
         try{
-            const response=await axios.get("https://64be5bd95ee688b6250c42bd.mockapi.io/api/v1/jobs"+"/"+id);
+            const response=await axios.get(MOCKAPI_URL+"/"+id);
             return response.data;
         }catch(err){
             console.log(err.message)
@@ -24,7 +24,7 @@ export default{
     async addJob(data){
         try{
             let response=await axios.post(
-                "https://64be5bd95ee688b6250c42bd.mockapi.io/api/v1/jobs",
+                MOCKAPI_URL,
                 data
             );
             console.log(response);
@@ -37,7 +37,7 @@ export default{
 
     async deleteJob(id){
         try{
-            let response=await axios.delete("https://64be5bd95ee688b6250c42bd.mockapi.io/api/v1/jobs"+"/"+id)
+            let response=await axios.delete(MOCKAPI_URL+"/"+id)
             console.log(response);
             return true;
         }catch(err){
@@ -48,7 +48,7 @@ export default{
 
     async modifyJob(id,data){
         try{
-            let response=await axios.patch("https://64be5bd95ee688b6250c42bd.mockapi.io/api/v1/jobs"+"/"+id,{data:data},{headers: { 'Content-Type': 'application/json' }});
+            let response=await axios.patch(MOCKAPI_URL+"/"+id,{data:data});
             console.log(response);
             return true;
         }catch(err){
@@ -57,3 +57,5 @@ export default{
         }
     }
 }
+
+const MOCKAPI_URL="https://64be5bd95ee688b6250c42bd.mockapi.io/api/v1/jobs";

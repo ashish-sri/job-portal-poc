@@ -9,6 +9,4 @@ function PopUpHeader(props){
     );
 }
 export default PopUpHeader;
-// "text-xl font-semibold"
-// "text-lg font-semibold" Create a job Step 1
 

@@ -5,13 +5,12 @@ import FullScreenPopUp from './FullScreenPopUp'
 import tailwind from '../resources/tailwind'
 import { getTailwindClass } from "../resources/tailwindClass";
 import constants from '../resources/constants'
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import api from "../scripts/api";
 
 function HomePage(props){
     const context=useAppContext();
     const dispatch=useAppDispatchContext();
-    // const [initialState,setInitialState]=useState()
 
     const pageIndex=context.pageIndex;  
 
