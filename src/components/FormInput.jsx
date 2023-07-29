@@ -8,7 +8,7 @@ function FormInput(props){
         if(props.displayWarning==="0"){
             setWarningState("");
         }else if(props.displayWarning==="1"){
-            setWarningState(" *");
+            setWarningState("*");
         }else if(props.displayWarning==="2"){
             setWarningState(" Fields marked with * are mandatory. Minimum length 5.");
         }else{
