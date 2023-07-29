@@ -5,13 +5,26 @@ import FullScreenPopUp from './FullScreenPopUp'
 import tailwind from '../resources/tailwind'
 import { getTailwindClass } from "../resources/tailwindClass";
 import constants from '../resources/constants'
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import api from "../scripts/api";
 
 function HomePage(props){
     const context=useAppContext();
     const dispatch=useAppDispatchContext();
+    // const [initialState,setInitialState]=useState()
 
     const pageIndex=context.pageIndex;  
+
+    useEffect(()=>{
+        async function getJobs(){
+            let x=await api.getAllJobs();
+            dispatch.allJobsDispatch({
+                type:"update-jobs",
+                allJobs:x
+            })
+        }   
+        getJobs();
+    },[])
 
     useEffect(()=>{
         console.log(context);

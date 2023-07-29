@@ -17,10 +17,9 @@ export function AppProvider({children}){
         currentJobIdReducer,
         "-1"
     );
-
     const [allJobs,allJobsDispatch]=useReducer(
         allJobsReducer,
-        initialJob
+        []
     );
 
     return(
@@ -100,5 +99,3 @@ const allJobsReducer=function(allJobs,action){
         }
     }
 }
-
-const initialJob=await api.getAllJobs();
