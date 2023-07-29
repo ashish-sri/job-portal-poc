@@ -22,7 +22,11 @@ function PopUpOne(props){
             setInput2(context.activeJob.companyName);
             setInput3(context.activeJob.industry);
             setInput4(context.activeJob.location);
-            setInput5(context.activeJob.remoteType);
+            if(context.activeJob.remoteType){
+                setInput5("remote");
+            }else{
+                setInput5("In-office");
+            }
         }
     },[context.currentJobId])
     
@@ -38,7 +42,7 @@ function PopUpOne(props){
                     "companyName":input2,
                     "industry":input3,
                     "location":input4,
-                    "remoteType":input5==="YES" || input5==="yes" || input5==="Yes" || input5==="remote" || input5==="REDMOTE" || input5==="Remote"  ,
+                    "remoteType":input5==="YES" || input5==="yes" || input5==="Yes" || input5==="remote" || input5==="REDMOTE" || input5==="Remote" || input5==="True" || input5==="true",
                     "createdAt":Date.now(),
                     "minExp":context.activeJob.minExp,
                     "maxExp":context.activeJob.maxExp,
@@ -53,7 +57,7 @@ function PopUpOne(props){
                     "companyName":input2,
                     "industry":input3,
                     "location":input4,
-                    "remoteType":input5==="YES" || input5==="yes" || input5==="Yes" || input5==="remote" || input5==="REDMOTE" || input5==="Remote"  ,
+                    "remoteType":input5==="YES" || input5==="yes" || input5==="Yes" || input5==="remote" || input5==="REDMOTE" || input5==="Remote" || input5==="True" || input5==="true"  ,
                     "createdAt":Date.now(),
                     "minExp":context.activeJob.minExp,
                     "maxExp":context.activeJob.maxExp,

@@ -16,6 +16,8 @@ function PopUpTwo(props){
     const [input4,setInput4]=useState("");
     const [input5,setInput5]=useState("");
     const [input6,setInput6]=useState(false);
+    const [checked1,setChecked1]=useState(false);
+    const [checked2,setChecked2]=useState(false);
 
     useEffect(()=>{
         if(context.currentJobId==="0" || Object.keys(context.activeJob).length>10){
@@ -25,8 +27,23 @@ function PopUpTwo(props){
             setInput4(context.activeJob.maxSalary);
             setInput5(context.activeJob.totalEmployee);
             setInput6(context.activeJob.applyType);
+            if(context.activeJob.applyType){
+                setChecked1(true);
+                setChecked2(false);
+            }else{
+                setChecked1(false);
+                setChecked2(true);
+            }
         }
     },[context.currentJobId])
+
+    useEffect(()=>{
+        if(checked1){
+            setInput6(true);
+        }else{
+            setInput6(false);
+        }
+    },[checked1,checked2])
 
     const handleSave=async function(){
         const obj=context.activeJob;
@@ -114,8 +131,14 @@ function PopUpTwo(props){
         }
     }
 
-    const handleInput6=function(event){
+    const handleChecked1=()=>{
+        setChecked1(!checked1);
+        setChecked2(checked1);
+    }
 
+    const handleChecked2=()=>{
+        setChecked2(!checked2);
+        setChecked1(checked2);
     }
 
     return(
@@ -131,7 +154,7 @@ function PopUpTwo(props){
                     <FormInput tailwind={props.tailwind.FORM.POPUP.FORMINPUT} title={constants.POP_UP2_INPUT4_TITLE} placeholder={constants.POP_UP2_INPUT2_PLACEHOLDER} displayWarning={"0"} value={input4} onChange={handleInput4}/>
                 </div>
                 <FormInput tailwind={props.tailwind.FORM.POPUP.FORMINPUT} title={constants.POP_UP2_INPUT5_TITLE} placeholder={constants.POP_UP2_INPUT5_PLACEHOLDER} displayWarning={"0"} value={input5} onChange={handleInput5}/>
-                <RadioInput tailwind={props.tailwind.FORM.POPUP.RADIO} title={constants.POP_UP_RADIO_TITLE} option1={constants.POP_UP_RADIO_OPTION1} option2={constants.POP_UP_RADIO_OPTION2} value={input6} onChange={handleInput6}/>
+                <RadioInput tailwind={props.tailwind.FORM.POPUP.RADIO} title={constants.POP_UP_RADIO_TITLE} option1={constants.POP_UP_RADIO_OPTION1} option2={constants.POP_UP_RADIO_OPTION2} checked1={checked1} checked2={checked2} handleChecked1={handleChecked1} handleChecked2={handleChecked2}/>
             </div>
             <div className={getTailwindClass(props.tailwind.BUTTONDIV)}>
                 <Button properties={getTailwindClass(props.tailwind.BUTTONDIV.POPUPBUTTON)} title={constants.POP_UP2_BUTTON_TITLE} onClick={handleSave}/>
